@@ -40,6 +40,24 @@ namespace WebPCConfigTool.Pages {
         protected global::System.Web.UI.WebControls.ObjectDataSource odsOSs;
         
         /// <summary>
+        /// odsCpus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsCpus;
+        
+        /// <summary>
+        /// odsVcs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsVcs;
+        
+        /// <summary>
         /// odsPcConfig control.
         /// </summary>
         /// <remarks>
@@ -74,6 +92,24 @@ namespace WebPCConfigTool.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridOS;
+        
+        /// <summary>
+        /// gridCpus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridCpus;
+        
+        /// <summary>
+        /// gridCards control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridCards;
         
         /// <summary>
         /// gridConfiguration control.
