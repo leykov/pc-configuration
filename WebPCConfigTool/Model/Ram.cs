@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebPCConfigTool.Model.Enums;
 
 namespace WebPCConfigTool.Model
 {
@@ -25,22 +27,16 @@ namespace WebPCConfigTool.Model
         [MaxLength(50)]
         public string Name { get; set; }
 
-       
-        /// <summary>
-        /// Direct access to <see cref="RamSize"/> entity id.
-        /// </summary>
-        [ForeignKey("RamSize")]
-        public long RamSizeId { get; set; }
-
         /// <summary>
         /// Foreign Key to RamSize.
         /// </summary>
-        public virtual RamSize RamSize { get; set; }
+        [Required]
+        public RamSize RamSize { get; set; }
 
         /// <inheritdoc />
         public override string ToString()
         {
-            return $"RAM {Name},  {base.ToString()}";
+            return $"RAM {Name}, Size={RamSize.GetDescription()}, {base.ToString()}";
         }
 
     }

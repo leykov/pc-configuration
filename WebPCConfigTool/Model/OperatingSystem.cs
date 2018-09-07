@@ -8,13 +8,13 @@ namespace WebPCConfigTool.Model
     /// <summary>
     /// Represents Organisation.
     /// </summary>
-    [Table("HardDisk")]
-    public class HardDisk : BaseEntity
+    [Table("OperatingSystem")]
+    public class OperatingSystem : BaseEntity
     {
         /// <summary>
         /// Default Constructor.
         /// </summary>
-        public HardDisk()
+        public OperatingSystem()
         {
         }
 
@@ -28,12 +28,12 @@ namespace WebPCConfigTool.Model
         /// <summary>
         /// HDD type.
         /// </summary>
-        public HardDiskType DiskType { get; set; }
+        public OperatingSystemType OsType { get; set; }
 
         /// <inheritdoc />
         public override string ToString()
         {
-            return $"HDD {Name}, Type={DiskType.GetDescription()}, {base.ToString()}";
+            return $"OS {Name}, Type={OsType.GetDescription()}, {base.ToString()}";
         }
     }
 }

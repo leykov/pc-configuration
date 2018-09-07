@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebPCConfigTool.Model;
 
@@ -12,7 +10,6 @@ namespace WebPCConfigTool.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void Grid_SelectedIndexChanged(object sender, EventArgs e)
@@ -24,8 +21,10 @@ namespace WebPCConfigTool.Pages
         {
             string idHdd = (this.gridHDD.SelectedDataKey != null) ? this.gridHDD.SelectedDataKey.Value.ToString() : null;
             string idRam = (this.gridRAM.SelectedDataKey != null) ? this.gridRAM.SelectedDataKey.Value.ToString() : null;
+            string idOs = (this.gridOS.SelectedDataKey != null) ? this.gridOS.SelectedDataKey.Value.ToString() : null;
             e.InputParameters["idHDD"] = Convert.ToInt64(idHdd);
             e.InputParameters["idRAM"] = Convert.ToInt64(idRam);
+            e.InputParameters["idOS"] = Convert.ToInt64(idOs);
         }
 
         protected void odsPcConfig_Selected(object sender, ObjectDataSourceStatusEventArgs e)
@@ -37,7 +36,6 @@ namespace WebPCConfigTool.Pages
                 this.totalPrice.Text = res.Sum(c => c.Price).ToString();
                 this.gridConfiguration.DataBind();
             }
-
         }
     }
 }

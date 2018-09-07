@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using WebPCConfigTool.Common;
 using WebPCConfigTool.Model;
+using WebPCConfigTool.Model.Enums;
 
 namespace WebPCConfigTool.DAL.Repositories
 {
@@ -21,38 +21,6 @@ namespace WebPCConfigTool.DAL.Repositories
             return GetEntities<Ram>().ToList();
         }
 
-        ///// <inheritdoc />
-        //public IndividualDto GetIndividualById(long individualId)
-        //{
-        //    var individualQuery = from individual in GetEntities<Ram>()
-
-        //                          join title in GetEntities<IndividualTitle>() on individual.TitleId equals title.Id
-
-        //                          join organisation in GetEntities<HardDisk>() on individual.OrganisationId equals organisation.Id
-
-        //                          where individual.Id == individualId
-
-        //                          select new IndividualDto
-        //                          {
-        //                              Id = individual.Id,
-        //                              FirstName = individual.FirstName,
-        //                              LastName = individual.LastName,
-        //                              Email = individual.Email,
-        //                              JobPosition = individual.JobPosition,
-        //                              Mobile = individual.Mobile,
-        //                              Telephone = individual.Telephone,
-        //                              TitleText = title.Label,
-        //                              OrganisationName = organisation.Name
-        //                          };
-
-        //    var individualDto = individualQuery.FirstOrDefault();
-        //    if (individualDto == null)
-        //    {
-        //        throw new ServiceException($"Missing individual with id: {individualId}");
-        //    }
-        //    return individualDto;
-        //}
-
         public void DeleteRam(long ramId)
         {
             if (ramId == -1) return;
@@ -68,11 +36,9 @@ namespace WebPCConfigTool.DAL.Repositories
                 dbContext.Rams.Remove(ram);
                 dbContext.SaveChanges();
             }
-
-
         }
 
-        public void InsertRam(string name, long ramSizeId)
+        public void InsertRam(string name, RamSize ramSize)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -84,7 +50,7 @@ namespace WebPCConfigTool.DAL.Repositories
                 var newRam = new Ram
                 {
                     Name = name,
-                    RamSizeId = ramSizeId,
+                    RamSize = ramSize,
                 };
                 if (dbContext != null)
                 {
@@ -97,7 +63,5 @@ namespace WebPCConfigTool.DAL.Repositories
             //    throw new ServiceException($"Individual with email: {email} already exist.");
             //}
         }
-
-
     }
 }

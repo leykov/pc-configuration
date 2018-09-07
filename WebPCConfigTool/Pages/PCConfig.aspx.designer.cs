@@ -31,6 +31,15 @@ namespace WebPCConfigTool.Pages {
         protected global::System.Web.UI.WebControls.ObjectDataSource odsRams;
         
         /// <summary>
+        /// odsOSs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsOSs;
+        
+        /// <summary>
         /// odsPcConfig control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace WebPCConfigTool.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridRAM;
+        
+        /// <summary>
+        /// gridOS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridOS;
         
         /// <summary>
         /// gridConfiguration control.
