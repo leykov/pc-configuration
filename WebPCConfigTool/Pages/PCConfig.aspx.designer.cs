@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebPCConfigTool {
+namespace WebPCConfigTool.Pages {
     
     
-    public partial class About {
+    public partial class PCConfig {
         
         /// <summary>
         /// odsHDDs control.

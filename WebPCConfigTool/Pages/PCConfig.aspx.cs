@@ -6,9 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebPCConfigTool.Model;
 
-namespace WebPCConfigTool
+namespace WebPCConfigTool.Pages
 {
-    public partial class About : Page
+    public partial class PCConfig : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace WebPCConfigTool
         protected void odsPcConfig_Selected(object sender, ObjectDataSourceStatusEventArgs e)
         {
             var res = e.ReturnValue as List<Component>;
-            if (res!=null && res.Count()>0)
+            if (res != null && res.Count() > 0)
             {
                 this.gridConfiguration.DataSource = res;
                 this.totalPrice.Text = res.Sum(c => c.Price).ToString();
