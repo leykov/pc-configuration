@@ -169,6 +169,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\BaseException.cs" />
+    <Compile Include="Common\CommonExtensions.cs" />
     <Compile Include="Common\ErrorType.cs" />
     <Compile Include="Common\ServiceException.cs" />
     <Compile Include="Contact.aspx.cs">
@@ -184,10 +185,10 @@
     <Compile Include="DAL\Mapping\KpmgEntityTypeConfiguration.cs" />
     <Compile Include="DAL\Migrations\Configuration.cs" />
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
+    <Compile Include="DAL\Repositories\OperatingSystemRepository.cs" />
     <Compile Include="DAL\Repositories\IBaseRepository.cs" />
     <Compile Include="DAL\Repositories\ComponentRepository.cs" />
     <Compile Include="DAL\Repositories\RamRepository.cs" />
-    <Compile Include="DAL\Repositories\RamSizeRepository.cs" />
     <Compile Include="DAL\Repositories\HardDiskRepository.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -201,11 +202,13 @@
     </Compile>
     <Compile Include="Model\BaseEntity.cs" />
     <Compile Include="Model\Entity.cs" />
+    <Compile Include="Model\Enums\RamSize.cs" />
     <Compile Include="Model\Enums\HardDiskType.cs" />
+    <Compile Include="Model\Enums\OperatingSystemType.cs" />
+    <Compile Include="Model\OperatingSystem.cs" />
     <Compile Include="Model\MoneyAttribute.cs" />
     <Compile Include="Model\Component.cs" />
     <Compile Include="Model\Ram.cs" />
-    <Compile Include="Model\RamSize.cs" />
     <Compile Include="Model\HardDisk.cs" />
     <Compile Include="Pages\PCConfig.aspx.cs">
       <DependentUpon>PCConfig.aspx</DependentUpon>

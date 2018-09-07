@@ -1,5 +1,6 @@
 ﻿namespace WebPCConfigTool.DAL.Migrations
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Data.SqlClient;
@@ -29,12 +30,46 @@
         /// <param name="context">The database context which can be used to seed the database.</param>
         protected override void Seed(DatabaseModelContext context)
         {
-            InitRamSizes(context);
-            InitDefaultRams(context);
-            InitDefaultHDDs(context);
+            //InitRamSizes(context);
+            InitRams(context);
+            InitHDDs(context);
+            InitOSs(context);
         }
 
-        private void InitDefaultRams(DatabaseModelContext context)
+        private void InitOSs(DatabaseModelContext context)
+        {
+            if (context.OperatingSystems.Count() > 0)
+            {
+                return;
+            }
+            var operatingSystems = new List<Model.OperatingSystem>
+            {
+               new Model.OperatingSystem {
+                   Name = "MS DOS",
+                   OsType = OperatingSystemType.DOS,
+                   Price = (decimal)52.5
+                },
+               new Model.OperatingSystem {
+                   Name = "Windows HOME 10",
+                   OsType = OperatingSystemType.Windows,
+                   Price = (decimal)352.20
+                },
+               new Model.OperatingSystem {
+                   Name = "Windows PRO 10",
+                   OsType = OperatingSystemType.Windows,
+                   Price = (decimal)857.9
+                },
+               new Model.OperatingSystem {
+                   Name = "Ubunty 11",
+                   OsType = OperatingSystemType.Linux,
+                   Price = (decimal)99.99
+                },
+            };
+            operatingSystems.ForEach(org => context.OperatingSystems.AddOrUpdate(os => os.Name, org));
+            context.SaveChanges();
+        }
+
+        private void InitRams(DatabaseModelContext context)
         {
             if (context.Rams.Count()>0)
             {
@@ -44,22 +79,22 @@
             {
                new Ram {
                    Name = "Transcend DDR4",
-                   RamSizeId = 2,
+                   RamSize = RamSize.M4096,
                    Price = (decimal)352.59
                 },
                new Ram {
                    Name = "Transcend DDR4",
-                   RamSizeId = 3,
+                   RamSize = RamSize.M8192,
                    Price = (decimal)552.79
                 },
                new Ram {
                    Name = "Transcend DDR4",
-                   RamSizeId = 4,
+                   RamSize = RamSize.G16,
                    Price = (decimal)852.9
                 },
                new Ram {
                    Name = "Kingston DDR4",
-                   RamSizeId = 2,
+                   RamSize = RamSize.M4096,
                    Price = (decimal)222.59
                 },
             };
@@ -67,25 +102,25 @@
             context.SaveChanges();
         }
 
-        private void InitRamSizes(DatabaseModelContext context)
-        {
-            if (context.RamSizes.Count() > 0)
-            {
-                return;
-            }
+        //private void InitRamSizes(DatabaseModelContext context)
+        //{
+        //    if (context.RamSizes.Count() > 0)
+        //    {
+        //        return;
+        //    }
 
-            var ramSizes = new List<RamSize> {
-                 new RamSize{Label = "2048 MB" },
-                 new RamSize{Label = "4096 MB" },
-                 new RamSize{Label = "8192 MB" },
-                 new RamSize{Label = "16 G" },
-                 new RamSize{Label = "32 G" },
-            };
-            ramSizes.ForEach(size => context.RamSizes.AddOrUpdate(title => title.Label, size));
-            context.SaveChanges();
-        }
+        //    var ramSizes = new List<RamSize> {
+        //         new RamSize{Label = "2048 MB" },
+        //         new RamSize{Label = "4096 MB" },
+        //         new RamSize{Label = "8192 MB" },
+        //         new RamSize{Label = "16 G" },
+        //         new RamSize{Label = "32 G" },
+        //    };
+        //    ramSizes.ForEach(size => context.RamSizes.AddOrUpdate(title => title.Label, size));
+        //    context.SaveChanges();
+        //}
 
-        private void InitDefaultHDDs(DatabaseModelContext context)
+        private void InitHDDs(DatabaseModelContext context)
         {
             if (context.HardDisks.Count() > 0)
             {

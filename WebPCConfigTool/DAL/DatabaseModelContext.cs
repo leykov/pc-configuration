@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
 using WebPCConfigTool.DAL.Mapping;
 using WebPCConfigTool.Model;
 
@@ -26,16 +24,14 @@ namespace WebPCConfigTool.DAL
         public DbSet<Ram> Rams { get; set; }
 
         /// <summary>
-        /// The list of ram sizes.
-        /// </summary>
-        public DbSet<RamSize> RamSizes { get; set; }
-
-
-        /// <summary>
         /// The list of Organisations.
         /// </summary>
         public DbSet<HardDisk> HardDisks { get; set; }
 
+        /// <summary>
+        /// List of OperatingSystems.
+        /// </summary>
+        public DbSet<Model.OperatingSystem> OperatingSystems { get; set; }
 
         #endregion EntitySets
 
@@ -89,7 +85,6 @@ namespace WebPCConfigTool.DAL
                 dynamic configurationInstance = Activator.CreateInstance(type);
                 modelBuilder.Configurations.Add(configurationInstance);
             }
-
 
             // configure money and percent precisions
             modelBuilder.Properties().Where(x => x.GetCustomAttributes(false).OfType<MoneyAttribute>().Any()).Configure(c => c.HasPrecision(15, 2));
