@@ -7,6 +7,8 @@
     <asp:ObjectDataSource ID="odsHDDs" runat="server" SelectMethod="GetAllDisks" TypeName="WebPCConfigTool.DAL.Repositories.HardDiskRepository"></asp:ObjectDataSource>
     <asp:ObjectDataSource ID="odsRams" runat="server" SelectMethod="GetAllRams" TypeName="WebPCConfigTool.DAL.Repositories.RamRepository"></asp:ObjectDataSource>
     <asp:ObjectDataSource ID="odsOSs" runat="server" SelectMethod="GetAllOSs" TypeName="WebPCConfigTool.DAL.Repositories.OperatingSystemRepository"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="odsCpus" runat="server" SelectMethod="GetAllCpus" TypeName="WebPCConfigTool.DAL.Repositories.CpuRepository"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="odsVcs" runat="server" SelectMethod="GetAllCards" TypeName="WebPCConfigTool.DAL.Repositories.VideoCardRepository"></asp:ObjectDataSource>
     <asp:ObjectDataSource ID="odsPcConfig" runat="server" TypeName="WebPCConfigTool.DAL.Repositories.ComponentRepository"
         SelectMethod="GetPCConfiguration"
         OnSelecting="odsPcConfig_Selecting"
@@ -15,6 +17,8 @@
             <asp:Parameter DefaultValue="0" Name="idHDD" Type="Int64" />
             <asp:Parameter DefaultValue="0" Name="idRAM" Type="Int64" />
             <asp:Parameter DefaultValue="0" Name="idOS" Type="Int64" />
+            <asp:Parameter DefaultValue="0" Name="idCPU" Type="Int64" />
+            <asp:Parameter DefaultValue="0" Name="idVC" Type="Int64" />
         </SelectParameters>
     </asp:ObjectDataSource>
     <div class="row">
@@ -99,6 +103,70 @@
                         <HeaderStyle HorizontalAlign="Center" />
                     </asp:BoundField>
                     <asp:BoundField DataField="OsType" HeaderText="Type" SortExpression="OsType" />
+                    <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" ItemStyle-Width="100px">
+                        <ItemStyle HorizontalAlign="Right" />
+                        <HeaderStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
+                </Columns>
+                <AlternatingRowStyle BackColor="White" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            </asp:GridView>
+        </div>
+        <div class="col-md-6">
+            <h2 style="font-weight: 300;">CPU </h2>
+            <asp:GridView ID="gridCpus" runat="server"
+                AllowPaging="True"
+                AutoGenerateColumns="False"
+                OnSelectedIndexChanged="Grid_SelectedIndexChanged"
+                DataKeyNames="Id" ForeColor="#333333" GridLines="Horizontal"
+                DataSourceID="odsCpus" Width="597px">
+                <Columns>
+                    <asp:CommandField ShowSelectButton="True" ItemStyle-Width="50px" />
+                    <asp:BoundField DataField="Id" HeaderText="" SortExpression="Id" />
+                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" ItemStyle-Width="300px">
+                        <HeaderStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" ItemStyle-Width="100px">
+                        <ItemStyle HorizontalAlign="Right" />
+                        <HeaderStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
+                </Columns>
+                <AlternatingRowStyle BackColor="White" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            </asp:GridView>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 style="font-weight: 300;">Video Cards</h2>
+            <asp:GridView ID="gridCards" runat="server"
+                AllowPaging="True"
+                AutoGenerateColumns="False"
+                OnSelectedIndexChanged="Grid_SelectedIndexChanged"
+                DataKeyNames="Id" ForeColor="#333333" GridLines="Horizontal"
+                DataSourceID="odsVcs" Width="597px">
+                <Columns>
+                    <asp:CommandField ShowSelectButton="True" ItemStyle-Width="50px" />
+                    <asp:BoundField DataField="Id" HeaderText="" SortExpression="Id" />
+                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" ItemStyle-Width="300px">
+                        <HeaderStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
                     <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" ItemStyle-Width="100px">
                         <ItemStyle HorizontalAlign="Right" />
                         <HeaderStyle HorizontalAlign="Center" />

@@ -185,6 +185,8 @@
     <Compile Include="DAL\Mapping\KpmgEntityTypeConfiguration.cs" />
     <Compile Include="DAL\Migrations\Configuration.cs" />
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
+    <Compile Include="DAL\Repositories\CpuRepository.cs" />
+    <Compile Include="DAL\Repositories\VideoCardRepository.cs" />
     <Compile Include="DAL\Repositories\OperatingSystemRepository.cs" />
     <Compile Include="DAL\Repositories\IBaseRepository.cs" />
     <Compile Include="DAL\Repositories\ComponentRepository.cs" />
@@ -201,6 +203,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\BaseEntity.cs" />
+    <Compile Include="Model\VideoCard.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Enums\RamSize.cs" />
     <Compile Include="Model\Enums\HardDiskType.cs" />
@@ -208,6 +211,7 @@
     <Compile Include="Model\OperatingSystem.cs" />
     <Compile Include="Model\MoneyAttribute.cs" />
     <Compile Include="Model\Component.cs" />
+    <Compile Include="Model\Cpu.cs" />
     <Compile Include="Model\Ram.cs" />
     <Compile Include="Model\HardDisk.cs" />
     <Compile Include="Pages\PCConfig.aspx.cs">

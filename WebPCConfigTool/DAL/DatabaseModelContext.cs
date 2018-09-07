@@ -19,12 +19,12 @@ namespace WebPCConfigTool.DAL
         #region EntitySets
 
         /// <summary>
-        /// The list of Individuals.
+        /// The list of Rams.
         /// </summary>
         public DbSet<Ram> Rams { get; set; }
 
         /// <summary>
-        /// The list of Organisations.
+        /// The list of HardDisks.
         /// </summary>
         public DbSet<HardDisk> HardDisks { get; set; }
 
@@ -32,6 +32,16 @@ namespace WebPCConfigTool.DAL
         /// List of OperatingSystems.
         /// </summary>
         public DbSet<Model.OperatingSystem> OperatingSystems { get; set; }
+
+        /// <summary>
+        /// The list of Cpus.
+        /// </summary>
+        public DbSet<Cpu> Cpus { get; set; }
+
+        /// <summary>
+        /// The list of VideoCards.
+        /// </summary>
+        public DbSet<VideoCard> VideoCards { get; set; }
 
         #endregion EntitySets
 

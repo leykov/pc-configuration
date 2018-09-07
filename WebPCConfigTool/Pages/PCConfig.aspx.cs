@@ -22,9 +22,13 @@ namespace WebPCConfigTool.Pages
             string idHdd = (this.gridHDD.SelectedDataKey != null) ? this.gridHDD.SelectedDataKey.Value.ToString() : null;
             string idRam = (this.gridRAM.SelectedDataKey != null) ? this.gridRAM.SelectedDataKey.Value.ToString() : null;
             string idOs = (this.gridOS.SelectedDataKey != null) ? this.gridOS.SelectedDataKey.Value.ToString() : null;
+            string idCpu = (this.gridCpus.SelectedDataKey != null) ? this.gridCpus.SelectedDataKey.Value.ToString() : null;
+            string idVc= (this.gridCards.SelectedDataKey != null) ? this.gridCards.SelectedDataKey.Value.ToString() : null;
             e.InputParameters["idHDD"] = Convert.ToInt64(idHdd);
             e.InputParameters["idRAM"] = Convert.ToInt64(idRam);
             e.InputParameters["idOS"] = Convert.ToInt64(idOs);
+            e.InputParameters["idCPU"] = Convert.ToInt64(idCpu);
+            e.InputParameters["idVC"] = Convert.ToInt64(idVc);
         }
 
         protected void odsPcConfig_Selected(object sender, ObjectDataSourceStatusEventArgs e)

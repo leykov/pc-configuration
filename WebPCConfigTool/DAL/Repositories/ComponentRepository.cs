@@ -15,12 +15,14 @@ namespace WebPCConfigTool.DAL.Repositories
             pcConfig = new List<Component>();
         }
 
-        public List<Component> GetPCConfiguration(long? idHDD, long? idRAM, long? idOS)
+        public List<Component> GetPCConfiguration(long? idHDD, long? idRAM, long? idOS, long? idCPU, long? idVC)
         {
             //var pcConfig = new List<Component>();
             AddComponent<HardDisk>(idHDD, pcConfig);
             AddComponent<Ram>(idRAM, pcConfig);
             AddComponent<OperatingSystem>(idOS, pcConfig);
+            AddComponent<Cpu>(idCPU, pcConfig);
+            AddComponent<VideoCard>(idVC, pcConfig);
             return pcConfig;
         }
 
