@@ -6,7 +6,7 @@ using WebPCConfigTool.Model.Enums;
 namespace WebPCConfigTool.Model
 {
     /// <summary>
-    /// Represents Organisation.
+    /// Represents HardDisk.
     /// </summary>
     [Table("HardDisk")]
     public class HardDisk : BaseEntity
@@ -19,7 +19,7 @@ namespace WebPCConfigTool.Model
         }
 
         /// <summary>
-        /// The Name of the Organisation.
+        /// The Name of the HardDisk.
         /// </summary>
         [Required]
         [MaxLength(255)]

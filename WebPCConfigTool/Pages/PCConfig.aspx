@@ -1,4 +1,4 @@
-﻿<%@ Page Title="PC Configuration" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="PCConfig.aspx.cs" Inherits="WebPCConfigTool.Pages.PCConfig" %>
+<%@ Page Title="PC Configuration" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="PCConfig.aspx.cs" Inherits="WebPCConfigTool.Pages.PCConfig" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
@@ -10,9 +10,18 @@
     <asp:ObjectDataSource ID="odsCpus" runat="server" SelectMethod="GetAllCpus" TypeName="WebPCConfigTool.DAL.Repositories.CpuRepository"></asp:ObjectDataSource>
     <asp:ObjectDataSource ID="odsVcs" runat="server" SelectMethod="GetAllCards" TypeName="WebPCConfigTool.DAL.Repositories.VideoCardRepository"></asp:ObjectDataSource>
     <asp:ObjectDataSource ID="odsPcConfig" runat="server" TypeName="WebPCConfigTool.DAL.Repositories.ComponentRepository"
-        SelectMethod="GetPCConfiguration"
+        SelectMethod="GetPCConfiguration" InsertMethod="InsertComponents"
         OnSelecting="odsPcConfig_Selecting"
-        OnSelected="odsPcConfig_Selected">
+        OnInserting="odsPcConfig_Inserting"
+        OnInserted="odsPcConfig_Inserted"
+        OnSelected="odsPcConfig_Selected" >
+        <InsertParameters>
+            <asp:Parameter Name="idHDD" Type="Int64" />
+            <asp:Parameter Name="idRAM" Type="Int64" />
+            <asp:Parameter Name="idOS" Type="Int64" />
+            <asp:Parameter Name="idCPU" Type="Int64" />
+            <asp:Parameter Name="idVC" Type="Int64" />
+        </InsertParameters>
         <SelectParameters>
             <asp:Parameter DefaultValue="0" Name="idHDD" Type="Int64" />
             <asp:Parameter DefaultValue="0" Name="idRAM" Type="Int64" />
@@ -59,7 +68,7 @@
             <asp:GridView ID="gridRAM" runat="server"
                 AllowPaging="True"
                 AutoGenerateColumns="False"
-                OnSelectedIndexChanged="Grid_SelectedIndexChanged" 
+                OnSelectedIndexChanged="Grid_SelectedIndexChanged"
                 DataKeyNames="Id" ForeColor="#333333" GridLines="Horizontal"
                 DataSourceID="odsRams" Width="597px">
                 <Columns>
@@ -211,7 +220,8 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
         <div style="width: 688px; float: right">
-            <asp:Label ID="lblTotal" runat="server" Text="Total: " Font-Bold="True"></asp:Label>
+            <asp:Button ID="btnConfirm" runat="server" Enabled="false"  Text="Confirm" OnClick="btnConfirm_Click" ForeColor="#FFCC99"    />
+            <asp:Label ID="lblTotal" runat="server" Text="Total: " Font-Bold="True" CssClass="text-right" Width="80px"></asp:Label>
             <asp:Label ID="totalPrice" runat="server" ForeColor="#CC0000"></asp:Label>
         </div>
     </div>
