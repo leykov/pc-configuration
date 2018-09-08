@@ -43,6 +43,16 @@ namespace WebPCConfigTool.DAL
         /// </summary>
         public DbSet<VideoCard> VideoCards { get; set; }
 
+        /// <summary>
+        /// The list of Components.
+        /// </summary>
+        public DbSet<Component> Components { get; set; }
+
+        /// <summary>
+        /// The list of PcConfigurations.
+        /// </summary>
+        public DbSet<PcConfiguration> PcConfigurations { get; set; }
+
         #endregion EntitySets
 
         /// <summary>

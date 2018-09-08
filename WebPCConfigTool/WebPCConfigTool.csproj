@@ -130,6 +130,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Pages\Components.aspx" />
     <Content Include="Pages\PCConfig.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -203,6 +204,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\BaseEntity.cs" />
+    <Compile Include="Model\PcConfiguration.cs" />
     <Compile Include="Model\VideoCard.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Enums\RamSize.cs" />
@@ -214,6 +216,13 @@
     <Compile Include="Model\Cpu.cs" />
     <Compile Include="Model\Ram.cs" />
     <Compile Include="Model\HardDisk.cs" />
+    <Compile Include="Pages\Components.aspx.cs">
+      <DependentUpon>Components.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Components.aspx.designer.cs">
+      <DependentUpon>Components.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PCConfig.aspx.cs">
       <DependentUpon>PCConfig.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

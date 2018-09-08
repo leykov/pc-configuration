@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using WebPCConfigTool.Common;
 using WebPCConfigTool.Model;
 
 namespace WebPCConfigTool.DAL.Repositories
@@ -7,23 +10,40 @@ namespace WebPCConfigTool.DAL.Repositories
     /// </summary>
     public class ComponentRepository : BaseRepository
     {
-        private readonly List<Component> pcConfig;
-
         /// <inheritdoc />
         public ComponentRepository() : base()
         {
-            pcConfig = new List<Component>();
         }
 
         public List<Component> GetPCConfiguration(long? idHDD, long? idRAM, long? idOS, long? idCPU, long? idVC)
         {
-            //var pcConfig = new List<Component>();
-            AddComponent<HardDisk>(idHDD, pcConfig);
-            AddComponent<Ram>(idRAM, pcConfig);
-            AddComponent<OperatingSystem>(idOS, pcConfig);
-            AddComponent<Cpu>(idCPU, pcConfig);
-            AddComponent<VideoCard>(idVC, pcConfig);
-            return pcConfig;
+            var pcConfiguration = new List<Component>();
+            AddComponent<HardDisk>(idHDD, pcConfiguration);
+            AddComponent<Ram>(idRAM, pcConfiguration);
+            AddComponent<Model.OperatingSystem>(idOS, pcConfiguration);
+            AddComponent<Cpu>(idCPU, pcConfiguration);
+            AddComponent<VideoCard>(idVC, pcConfiguration);
+            return pcConfiguration;
+        }
+
+        public void InsertComponents(long? idHDD, long? idRAM, long? idOS, long? idCPU, long? idVC)
+        {
+            var components = GetPCConfiguration(idHDD, idRAM, idOS, idCPU, idVC);
+            var pcConfig = InsertPcConfiguration("PC configuration");
+            // set total price
+            pcConfig.Price = components.Sum(c => c.Price*c.Quantity);
+            pcConfig.Name = $"{pcConfig.Name}-{pcConfig.Id}";
+            components.ForEach(c => c.PcConfigurationId = pcConfig.Id);
+            var dbContext = Context as DatabaseModelContext;
+            if (dbContext != null)
+            {
+                dbContext.Components.AddRange(components);
+                dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new ServiceException("DbContext is null.");
+            }
         }
 
         private void AddComponent<T>(long? id, List<Component> pcConfiguration)  where T : BaseEntity
@@ -36,7 +56,8 @@ namespace WebPCConfigTool.DAL.Repositories
                     var component = new Component
                     {
                         Name = entity.ToString(),
-                        Price = entity.Price
+                        Price = entity.Price,
+                        Quantity = 1
                     };
 
                     pcConfiguration.Add(component);
@@ -44,6 +65,32 @@ namespace WebPCConfigTool.DAL.Repositories
 
             }
         }
+
+        private PcConfiguration InsertPcConfiguration(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException(); 
+            }
+            var dbContext = Context as DatabaseModelContext;
+            var config = new PcConfiguration
+            {
+                Name = name,
+            };
+            if (dbContext != null)
+            {
+                var newconfig = dbContext.PcConfigurations.Add(config);
+                dbContext.SaveChanges();
+                config = newconfig;
+            }
+            else
+            {
+                throw new ServiceException("DbContext is null.");
+            }
+
+            return config;
+        }
+
     }
 
 }
