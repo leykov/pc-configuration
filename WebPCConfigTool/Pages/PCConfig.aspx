@@ -14,7 +14,7 @@
         OnSelecting="odsPcConfig_Selecting"
         OnInserting="odsPcConfig_Inserting"
         OnInserted="odsPcConfig_Inserted"
-        OnSelected="odsPcConfig_Selected" >
+        OnSelected="odsPcConfig_Selected">
         <InsertParameters>
             <asp:Parameter Name="idHDD" Type="Int64" />
             <asp:Parameter Name="idRAM" Type="Int64" />
@@ -195,7 +195,7 @@
         </div>
     </div>
     <hr />
-    <div class="row">
+    <div class="col-md-12">
         <h2 style="font-weight: 300;">PC Configuration </h2>
         <asp:GridView ID="gridConfiguration" runat="server" AutoGenerateColumns="False" GridLines="Horizontal"
             Width="600px">
@@ -219,10 +219,14 @@
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
-        <div style="width: 688px; float: right">
-            <asp:Button ID="btnConfirm" runat="server" Enabled="false"  Text="Confirm" OnClick="btnConfirm_Click" ForeColor="#FFCC99"    />
-            <asp:Label ID="lblTotal" runat="server" Text="Total: " Font-Bold="True" CssClass="text-right" Width="80px"></asp:Label>
-            <asp:Label ID="totalPrice" runat="server" ForeColor="#CC0000"></asp:Label>
+        <div class="row">
+            <div class="col-md-5" style="align-content: flex-start">
+                <asp:Button ID="btnConfirm" runat="server" Enabled="false" Text="Confirm" OnClick="btnConfirm_Click" ForeColor="#FFCC99" />
+            </div>
+            <div class="row col-md-2" style="align-content: flex-end">
+                <asp:Label ID="lblTotal" runat="server" Text="Total: " Font-Bold="True" Width="75px" ></asp:Label>
+                <asp:Label ID="totalPrice" runat="server" ForeColor="#CC0000" />
+            </div>
         </div>
     </div>
 </asp:Content>

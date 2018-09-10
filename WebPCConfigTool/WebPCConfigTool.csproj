@@ -111,7 +111,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -131,6 +130,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Pages\Components.aspx" />
+    <Content Include="Pages\Configurations.aspx" />
     <Content Include="Pages\PCConfig.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -173,19 +173,13 @@
     <Compile Include="Common\CommonExtensions.cs" />
     <Compile Include="Common\ErrorType.cs" />
     <Compile Include="Common\ServiceException.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DAL\DatabaseModelContext.cs" />
     <Compile Include="DAL\DbContextExtensions.cs" />
     <Compile Include="DAL\IDbContext.cs" />
     <Compile Include="DAL\Mapping\KpmgEntityTypeConfiguration.cs" />
     <Compile Include="DAL\Migrations\Configuration.cs" />
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
+    <Compile Include="DAL\Repositories\PcConfigurationRepository.cs" />
     <Compile Include="DAL\Repositories\CpuRepository.cs" />
     <Compile Include="DAL\Repositories\VideoCardRepository.cs" />
     <Compile Include="DAL\Repositories\OperatingSystemRepository.cs" />
@@ -222,6 +216,13 @@
     </Compile>
     <Compile Include="Pages\Components.aspx.designer.cs">
       <DependentUpon>Components.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Configurations.aspx.cs">
+      <DependentUpon>Configurations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Configurations.aspx.designer.cs">
+      <DependentUpon>Configurations.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\PCConfig.aspx.cs">
       <DependentUpon>PCConfig.aspx</DependentUpon>

@@ -46,6 +46,16 @@ namespace WebPCConfigTool.DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Get components by PcConfiguration id.
+        /// </summary>
+        /// <param name="idPcConfiguration">PcConfiguration id</param>
+        /// <returns></returns>
+        public List<Component> GetComponents(long idPcConfiguration)
+        {
+            return GetEntities<Component>().Where(c => c.PcConfigurationId == idPcConfiguration ).ToList();
+        }
+
         private void AddComponent<T>(long? id, List<Component> pcConfiguration)  where T : BaseEntity
         {
             if (id != null)
