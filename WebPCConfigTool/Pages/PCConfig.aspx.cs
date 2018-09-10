@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
@@ -88,5 +89,18 @@ namespace WebPCConfigTool.Pages
             e.InputParameters["idCPU"] = Convert.ToInt64(idCpu);
             e.InputParameters["idVC"] = Convert.ToInt64(idVc);
         }
+
+        protected string GetEnumDescription(object enumType)
+        {
+
+            var value = (Enum)(object)enumType;
+
+            if (value == null)
+                throw new ArgumentException("Enumeration type is expected.");
+
+
+            return value.GetDescription();
+        }
+
     }
 }

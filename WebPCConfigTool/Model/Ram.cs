@@ -7,7 +7,7 @@ using WebPCConfigTool.Model.Enums;
 namespace WebPCConfigTool.Model
 {
     /// <summary>
-    /// Represents Individual or User.
+    /// Represents RAM.
     /// </summary>
     [Table("Ram")]
     public class Ram : BaseEntity
@@ -21,14 +21,14 @@ namespace WebPCConfigTool.Model
         }
 
         /// <summary>
-        /// First Name of the Individual.
+        /// First Name of the RAM.
         /// </summary>
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Foreign Key to RamSize.
+        /// RamSize.
         /// </summary>
         [Required]
         public RamSize RamSize { get; set; }
