@@ -53,6 +53,7 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Pages/PCConfig.aspx">Set Configuration</a></li>
                         <li><a runat="server" href="~/Pages/Configurations.aspx">Configurations</a></li>
+                        <li><a runat="server" href="~/Pages/Components.aspx">Components</a></li>
                     </ul>
                 </div>
             </div>

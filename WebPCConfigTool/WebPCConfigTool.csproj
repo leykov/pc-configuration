@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\BaseException.cs" />
     <Compile Include="Common\CommonExtensions.cs" />
+    <Compile Include="Common\Enumeration.cs" />
     <Compile Include="Common\ErrorType.cs" />
     <Compile Include="Common\ServiceException.cs" />
     <Compile Include="DAL\DatabaseModelContext.cs" />

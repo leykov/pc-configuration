@@ -21,14 +21,14 @@ namespace WebPCConfigTool.DAL.Repositories
             return GetEntities<Ram>().ToList();
         }
 
-        public void DeleteRam(long ramId)
+        public void DeleteRam(long id)
         {
-            if (ramId == -1) return;
+            if (id == -1) return;
 
-            var ram = FindById<Ram>(ramId);
+            var ram = FindById<Ram>(id);
             if (ram == null)
             {
-                throw new ServiceException($"Missing ram with id: {ramId}");
+                throw new ServiceException($"Missing ram with id: {id}");
             }
             var dbContext = Context as DatabaseModelContext;
             if (dbContext != null)
@@ -38,30 +38,30 @@ namespace WebPCConfigTool.DAL.Repositories
             }
         }
 
-        public void InsertRam(string name, RamSize ramSize)
+        public void InsertRam(string name, decimal price, int compType)
         {
             if (string.IsNullOrEmpty(name))
             {
                 return;
             }
-            //if (FindByEmail(email) == null)
+            var dbContext = Context as DatabaseModelContext;
+            var newRam = new Ram
             {
-                var dbContext = Context as DatabaseModelContext;
-                var newRam = new Ram
-                {
-                    Name = name,
-                    RamSize = ramSize,
-                };
-                if (dbContext != null)
-                {
-                    dbContext.Rams.Add(newRam);
-                    dbContext.SaveChanges();
-                }
+                Name = name,
+                Price = price,
+                RamSize =  (RamSize)compType,
+            };
+            if (dbContext != null)
+            {
+                dbContext.Rams.Add(newRam);
+                dbContext.SaveChanges();
             }
-            //else
-            //{
-            //    throw new ServiceException($"Individual with email: {email} already exist.");
-            //}
         }
+
+        public IDictionary<int, string> GetRamSize()
+        {
+            return Enumeration.GetAll<RamSize>();
+        }
+
     }
 }

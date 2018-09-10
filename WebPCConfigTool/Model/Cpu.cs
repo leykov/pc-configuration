@@ -7,7 +7,7 @@ using WebPCConfigTool.Model.Enums;
 namespace WebPCConfigTool.Model
 {
     /// <summary>
-    /// Represents Individual or User.
+    /// Represents CPU.
     /// </summary>
     [Table("Cpu")]
     public class Cpu : BaseEntity
@@ -21,7 +21,7 @@ namespace WebPCConfigTool.Model
         }
 
         /// <summary>
-        /// First Name of the Individual.
+        /// First Name of the CPU.
         /// </summary>
         [Required]
         [MaxLength(50)]
